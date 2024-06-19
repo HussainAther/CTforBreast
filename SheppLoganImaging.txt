@@ -1,0 +1,29 @@
+# Define the Shepp-Logan phantom geometry
+s:Geometry Type = "SimplePhantom"
+s:Phantom.Name = "SheppLoganPhantom"
+s:Phantom.Material = "Water"
+s:Phantom.Size = "256 256 256 mm"
+s:Phantom.VoxelMaterial = "Water"
+s:Phantom.VoxelDataFile = "SheppLoganPhantom.raw"
+s:Phantom.VoxelDataType = "float"
+s:Phantom.VoxelGridSize = "256 256 256"
+
+# Define the X-ray source
+s:Source Type = "Beam"
+s:Source.ParticleType = "xray"
+s:Source.Energy = "100 keV"
+s:Source.Position = "0 0 -300 mm"
+s:Source.Direction = "0 0 1"
+s:Source.BeamSpread = "0 0"
+
+# Define the detector
+s:Detector Type = "SimpleDetector"
+s:Detector.Material = "G4_WATER"
+s:Detector.Size = "256 256 1 mm"
+s:Detector.Bins = "256 256 1"
+s:Detector.Position = "0 0 300 mm"
+s:Detector.OutputFile = "projections.txt"
+
+# Define the simulation run parameters
+s:Run.NumberOfHistories = 1000000
+
