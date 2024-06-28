@@ -1,0 +1,66 @@
+# TOPAS Input File for Comprehensive Breast Cancer CT Simulation
+# Author: Syed Hussain Ather
+# Date: 06/24/2024
+
+# Define the Phantom Geometry (Breast Phantom)
+s:Phantom.Name = "BreastPhantom"
+s:Phantom.Material = "G4_BREAST_ICRP"
+s:Phantom.Size = "256 256 256 mm"
+s:Phantom.VoxelMaterial = "G4_BREAST_ICRP"
+s:Phantom.VoxelDataFile = "BreastPhantom.raw"
+s:Phantom.VoxelDataType = "float"
+s:Phantom.VoxelGridSize = "256 256 256"
+
+# Define the X-ray Source
+s:Source.Type = "Beam"
+s:Source.ParticleType = "xray"
+s:Source.Energy = "50 keV"
+s:Source.Position = "0 0 -300 mm"
+s:Source.Direction = "0 0 1"
+s:Source.BeamSpread = "0 0"
+
+# Define the Detector
+s:Detector.Type = "SimpleDetector"
+s:Detector.Material = "G4_WATER"
+s:Detector.Size = "256 256 1 mm"
+s:Detector.Bins = "256 256 1"
+s:Detector.Position = "0 0 300 mm"
+s:Detector.OutputFile = "breast_projections.txt"
+
+# Define the rotation for CT imaging
+s:Rotation.NumberOfRotations = 360
+s:Rotation.AngleIncrement = 1 degree
+
+# Define the Simulation World
+s:World.PhantomMaterial = "G4_AIR"
+s:World.PhantomSize = "512 512 512 mm"
+s:World.BeamMaterial = "G4_AIR"
+s:World.BeamSize = "512 512 512 mm"
+
+# Run Parameters
+s:Run.NumberOfHistories = 1000000
+
+# Output Control
+s:Output.FileName = "BreastCancerCTOutput.root"
+s:Output.Format = "root"
+s:Output.Verbose = "1"
+s:Output.FileExtension = ".root"
+
+# Define Visualization (Optional)
+s:VisualizationEngine = "Geant4"
+s:VisualizationOptions = "OGL"
+
+# Additional Parameters for More Accurate Simulation
+s:PhysicsList = "QGSP_BIC_EMY"
+s:RangeCut = "0.01 mm"
+
+# Define the scanning geometry
+s:Scan.Axis = "y"
+s:Scan.RotationAngleStart = "0 degree"
+s:Scan.RotationAngleStop = "360 degree"
+s:Scan.RotationAngleStep = "1 degree"
+
+# Materials Definition
+s:MaterialBreastDensity = "1.02 g/cm3"
+s:MaterialWaterDensity = "1.0 g/cm3"
+
